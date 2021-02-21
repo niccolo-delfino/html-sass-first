@@ -1,3 +1,60 @@
+// rules
+$first_color:#F08080;
+$second_color:#ADD8E6;
+$third_color:#FFA500;
+$height:70px;
+$main_width: 20%;
+
+@mixin useFlex{
+  display: flex;
+  justify-content: center;
+}
+
+@mixin centerFlex{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+// CSS
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body{
-  background-color: yellow;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+header,
+footer{
+  width: 100%;
+  height: $height;
+  text-align: center;
+  line-height: $height;
+  background-color: $first_color;
+}
+
+main {
+  height: calc(100vh - #{$height * 2});
+  @include useFlex;
+
+  .col-left,
+  .col-right {
+    @include centerFlex;
+    width: $main_width;
+    height: 100%;
+    background-color: $second_color;
+    color: $first_color;
+  }
+
+  .col-center {
+    @include centerFlex;
+    width: calc(100% - #{$main_width * 2});
+    height: 100%;
+    background-color: $third_color;
+  }
 }
